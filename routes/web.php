@@ -17,12 +17,22 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function(){
   Route::get('room/create', 'Admin\RoomController@add')->middleware('auth');
-  Route::post('room/create', 'Admin\RoomController@create');
-  Route::get('room', 'Admin\RoomController@index');
-  Route::get('room/edit',  'Admin\RoomController@edit');
-  Route::post('room/edit', 'Admin\RoomController@updeta');
-  Route::get('room/delete', 'Admin\RoomController@delete');
+  Route::post('room/create', 'Admin\RoomController@create')->middleware('auth');
+  Route::get('room', 'Admin\RoomController@index')->middleware('auth');
+  Route::get('room/edit',  'Admin\RoomController@edit')->middleware('auth');
+  Route::post('room/edit', 'Admin\RoomController@update')->middleware('auth');
+  Route::get('room/delete', 'Admin\RoomController@delete')->middleware('auth');
 });
+
+Route::get('/', 'PagesController@index');
+Route::view('/crecte', 'UsersController@create');
+Route::post('/posts', 'UsersController@save');
+Route::get('/users/{user}', 'PagesController@confirm');
+Route::post('/crecte', 'UsersController@delete');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

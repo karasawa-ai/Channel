@@ -1,4 +1,4 @@
-
+@extends('layouts.admin')
 @section('title', '作成済みの部屋')
 
 @section('content')
@@ -12,9 +12,10 @@
     </div>
     <div class="col-md-8">
       <form action="{{ action('Admin\RoomController@index') }}" method="get">
+        <div class="form-group row">
         <label class="col-md-2">部屋の名前</label>
         <div class="col-md-8">
-          <input type="roomname" class="form-control" name="cond_roomname" value={{ $cond_roomname }}>
+          <input type="roomname" class="form-control" name="cond_roomname" value="{{ $cond_roomname }}">
         </div>
         <div class="col-md-2">
           {{ csrf_field() }}
@@ -24,6 +25,7 @@
     </form>
   </div>
 </div>
+
 <div class="row">
   <div class="admin-room col-md-12 mx-auto">
     <div class="row">
@@ -40,21 +42,22 @@
           @foreach($posts as $room)
           <tr>
             <th>{{ $room->id }}</th>
-            <tb>{{ str_limit($room->roomname,100) }}</tb>
-            <tb>{{ str_limit($room->readme,250) }}</tb>
-            <tb>
+            <td>{{ str_limit($room->roomname,100) }}</td>
+            <td>{{ str_limit($room->readme,250) }}</td>
+            <td>
               <div>
                 <a href="{{ action('Admin\RoomController@edit',['id' => $room->id]) }}">編集</a>
               </div>
               <div>
                 <a href="{{ action('Admin\RoomController@delete', ['id' =>$room->id]) }}">削除</a>
               </div>
-            </tb>
+            </td>
           </tr>
           @endforeach
         </tbody>
       </table>
     </div>
   </div>
+</div>
 </div>
 @endsection

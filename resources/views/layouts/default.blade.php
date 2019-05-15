@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>@yield('roomname')</title>
   <link rel="stylesheet" href="/css/styles.css">
-  <div> {{ $room_form->readme }} </div>
+  <p class="body mx-auto">@yield('readme')</p>
 </head>
 <body>
   <div id="header">

@@ -24,11 +24,13 @@ Route::group(['prefix' => 'admin'], function(){
   Route::get('room/delete', 'Admin\RoomController@delete')->middleware('auth');
 });
 
-Route::get('/', 'PagesController@index');
+Route::get('/creata/index', 'PagesController@index');
 Route::view('/crecte', 'UsersController@create');
 Route::post('/posts', 'UsersController@save');
 Route::get('/users/{user}', 'PagesController@confirm');
 Route::post('/crecte', 'UsersController@delete');
+
+Route::get('/', 'RoomController@index');
 
 Auth::routes();
 

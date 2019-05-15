@@ -10,5 +10,7 @@ class Channel extends Model
     public static $rules = array(
       'roomname' => 'required',
       'readme' => 'required',
+      'body' =>'required',
+      
     );
 }

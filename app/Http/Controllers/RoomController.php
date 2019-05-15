@@ -11,19 +11,19 @@ class RoomController extends Controller
 {
     public function index(Request $request)
     {
-      $cond_title = $requst->cond_title;
-      if($cond_title != '') {
-        $posts = Channel::where('roomname' ,$cond_title).ordeBy('updated_at', 'desc')->get();
+      $cond_roomname = $request->cond_roomname;
+      if($cond_roomname != '') {
+        $posts = Channel::where('roomname' ,$cond_roomname).ordeBy('updated_at', 'desc')->get();
       } else {
         $posts = Channel::all()->sortByDesc('updated_at');
       }
 
-      if (conut($posts) > 0) {
-        $headlink = $posts->shift();
+      if (count($posts) > 0) {
+        $headline = $posts->shift();
       } else {
-        $headlink = null;
+        $headline = null;
       }
 
-      return view('room.index', ['headline' => $headline, 'posts' => $posts, 'cond_title' => $cond_title]);
+      return view('room.index', ['headline' => $headline, 'posts' => $posts, 'cond_roomname' => $cond_roomname]);
     }
 }

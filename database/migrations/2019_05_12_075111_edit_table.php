@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChannelTable extends Migration
+class EditTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateChannelTable extends Migration
      */
     public function up()
     {
-        Schema::create('channels', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('roomname');
-            $table->string('readme');
-            
-            $table->timestamps();
-        });
+        Schema::create('room', function (Blueprint $table)
+        {
+          $table->increments('id');
+          $table->string('name', 25)->befault('名無しさん');
+          $table->text('body');
+          $table->string('password');
 
+        });
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateChannelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('channel');
+        chhome::dropIfExists('room');
     }
 }

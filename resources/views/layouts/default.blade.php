@@ -9,7 +9,7 @@
 <body>
   <div id="header">
     @yield('header')
-    <h1>掲示板</h1>
+    <h1>部屋一覧</h1>
   </div><!-- header -->
   <div id="main">
     @yield('content')
